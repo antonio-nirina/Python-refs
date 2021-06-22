@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  server:
+    build: ./server
+    #enables auto-reload so the server will restart after changes are made to the code 
+    command: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8080
+    volumes:
+      - "./server/:/app"
+    ports:
+      - 8080:8080
+  client:
+    build:
+      context: ./client/
+    command: npm start
+    volumes:
+      - ./client/:/usr/src/
+      - /usr/src/node_modules
+    depends_on:
+      - server
+    ports:
+      - "3000:3000"
