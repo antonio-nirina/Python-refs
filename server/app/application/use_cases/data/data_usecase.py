@@ -19,7 +19,7 @@ class GetDataUseCase(AbstractGetDataUseCase):
         logo:str = bs.find("img",{"class":"responsive-image__Image-o4o8ec-1"})['src']
         date_release:str    = bs.find("div",{"class":"mini-versions__VersionDate-sc-19sko2j-6"}).get_text()
         description:str     = bs.find("h2",{"class":"header-desktop__AppNameH2-xc5gow-6"})
-        print(description)
+
         newName:str         = DataHandler.CheckEmptyHandler(name)
         newLogo:str         = logo if(logo) else ""
         newVersion:str      = DataHandler.CheckEmptyHandler(version)
