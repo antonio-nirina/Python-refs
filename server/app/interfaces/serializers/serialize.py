@@ -3,7 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi import status
 from app.entities.data import Data
 
-def response_success(data:List[Data]):
+def response_success(data:Data):
     items = {
         "code": status.HTTP_200_OK,
         "message":"success",
